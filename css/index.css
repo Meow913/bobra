@@ -1,0 +1,119 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+}
+#div-header {
+    width: 100%;
+    height: 80px;
+    background-color: #E9967A;
+    position: relative;
+}
+#div-logo {
+    display:inline-block;
+    padding-left: 25rem;
+}
+#logo-href-main{
+    text-decoration: none;
+    display: inline-block;
+}
+#logo-title {
+    display: inline-block;
+    /*line-height: 60px;*/
+    /*text-align: center;*/
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: black;
+    font-weight: 800;
+    height: 60px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+#div-menu {
+    display:inline-block;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    padding-left: 5rem;
+}
+
+.mmenuu,
+.ssubmenuu {
+    list-style: none;
+    display: block;
+    margin:0px;
+    padding:0px;
+}
+.mmenuu:after, .ssubmenuu:after {
+    display: block;
+    float: none;
+    content: ' ';
+    clear: both;
+}
+ul.mmenuu > li {
+    float: left;
+    position: relative;
+}
+ul.mmenuu > li > a {
+    /* Делаю элементы блочными: */
+    display: block;
+    /* Задаю отступ 10px. */
+    padding: 10px;
+    /* Убираю форматирование*/
+    text-decoration: none;
+}
+
+ul.ssubmenuu {
+    position: absolute;
+    width: 240px;
+    top: 37px;
+    left:0px;
+    /* Делаю субменю скрытыми. */
+    display: none;
+    /* Цвет — белый. */
+    border: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+ul.ssubmenuu > li {
+    /* Блочное расположение элементов*/
+    display: block;
+}
+ul.ssubmenuu > li > a {
+    /* Делаю элементы блочными. */
+    display: block;
+    /* Убираю форматирование*/
+    text-decoration: none;
+    /* Задаю отступ. */
+    padding: 10px;
+}
+ul.mmenuu > li:hover > ul.ssubmenuu {
+    /* Делаю элементы блочными. */
+    display: block;
+}
+
+.article-section {
+    display: block;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    width: 50rem;
+    max-width: 90%;
+    margin: 2rem auto;
+}
+.article-title-div {
+    border: none;
+    border-bottom: 2px solid #ccc;
+    color: #494949;
+    width: 100%;
+    display: block;
+    margin: 1rem 0;
+}
