@@ -18,8 +18,19 @@ class QueriesToDataBase {
         $categories = $this->classDbh->query("SELECT * FROM `categories` WHERE `id` = " . $id);
         foreach ($categories as $category) {
             return $category;
+        }
     }
-}
+    //Запрос на проверку пользователя в базе данных
+    public function checkUserIsset ($login) {
+        $users_checked = $this->classDbh->query("SELECT login FROM users WHERE login = '$login'");
+        return $users_checked;
+    }
+    //Запрос на проверку почты в базе данных
+    public function checkEmailIsset ($email) {
+        $email_checked = $this->classDbh->query("SELECT login FROM users WHERE email = '$email'");
+        return $email_checked;
+    }
+
 }
 
 $queryToDataBase = new QueriesToDataBase ($dbh);

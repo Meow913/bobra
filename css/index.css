@@ -13,44 +13,58 @@ body {
     height: 80px;
     background-color: #E9967A;
     position: relative;
+    display: flex;
+
 }
+
+@media (min-width: 1300px) {
+    #div-header {padding-left: 27rem;}
+}
+@media (min-width: 900px) and (max-width: 1300px) {
+    #div-header {padding-left: 15rem;}
+}
+@media (max-width: 900px) {
+    #div-header {padding-left: 2rem;}
+}
+
 #div-logo {
-    display:inline-block;
-    padding-left: 25rem;
+    height: 100%;
+    display: flex;
+
 }
 #logo-href-main{
     text-decoration: none;
     display: inline-block;
+    height: 100%;
 }
-#logo-title {
-    display: inline-block;
-    /*line-height: 60px;*/
-    /*text-align: center;*/
-    text-decoration: none;
-    font-size: 2.5rem;
-    color: black;
-    font-weight: 800;
-    height: 60px;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
+#logo-pic {
+    margin-top: 3px;
+}
+#p-pic-logo {
+    z-index: 1;
+    height: 100%;
+    margin: 0;
 }
 #div-menu {
-    display:inline-block;
-    height: 60px;
+    display: flex;
+    height: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto 0;
-    padding-left: 5rem;
+    padding-left: 10rem;
 }
-
+.head-li-menu {
+    width: 150px;
+    text-align: center;
+}
 .mmenuu,
 .ssubmenuu {
     list-style: none;
     display: block;
-    margin:0px;
-    padding:0px;
+    /*margin:0px;*/
+    padding: 0px;
+
 }
 .mmenuu:after, .ssubmenuu:after {
     display: block;
@@ -65,22 +79,25 @@ ul.mmenuu > li {
 ul.mmenuu > li > a {
     /* Делаю элементы блочными: */
     display: block;
+    font-size: 1.1em;
     /* Задаю отступ 10px. */
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     /* Убираю форматирование*/
     text-decoration: none;
+    color: black;
 }
 
 ul.ssubmenuu {
     position: absolute;
-    width: 240px;
+    width: 100%;
     top: 37px;
     left:0px;
     /* Делаю субменю скрытыми. */
     display: none;
     /* Цвет — белый. */
     border: none;
-    border-top: 1px solid #ccc;
+
     border-bottom: 1px solid #ccc;
 }
 ul.ssubmenuu > li {
@@ -93,7 +110,12 @@ ul.ssubmenuu > li > a {
     /* Убираю форматирование*/
     text-decoration: none;
     /* Задаю отступ. */
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: black;
+    background-color: #E9967A;
+    border-top: 1px solid #ccc;
+    width: 150px;
 }
 ul.mmenuu > li:hover > ul.ssubmenuu {
     /* Делаю элементы блочными. */
@@ -116,4 +138,35 @@ ul.mmenuu > li:hover > ul.ssubmenuu {
     width: 100%;
     display: block;
     margin: 1rem 0;
+}
+.form-div {
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+input {
+    margin: 10px 0;
+    padding: 10px;
+    border: unset;
+    border-bottom: 2px solid #e3e3e3;
+    outline: none;
+}
+button {
+    padding: 10px;
+    background: #e3e3e3;
+    border: unset;
+    cursor: pointer;
+}
+.msg {
+    border: 2px solid #ffa908;
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
 }
