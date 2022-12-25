@@ -46,9 +46,8 @@ body {
     margin: 0;
 }
 #div-menu {
-    display: flex;
+    display: inline-block;
     height: 100%;
-    position: absolute;
     top: 0;
     bottom: 0;
     margin: auto 0;
@@ -121,7 +120,39 @@ ul.mmenuu > li:hover > ul.ssubmenuu {
     /* Делаю элементы блочными. */
     display: block;
 }
+#my-page{
+    display: inline-block;
+    height: 100%;
+    margin-top: -2px;
+    text-align: center;
 
+}
+#my-page:before {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    content: "";
+}
+
+.my-page-full-name {
+    display: inline-block;
+}
+.my-page-full-name p {
+    margin: 0 auto;
+    display: inline-block;
+    width: 100%;
+    font-size: 0.9rem;
+}
+.avatar-div {
+    width: 50px;
+    height: 50px;
+    background-size: cover;
+    background-position: top center;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+
+}
 .article-section {
     display: block;
     padding: 1rem;
@@ -134,6 +165,7 @@ ul.mmenuu > li:hover > ul.ssubmenuu {
 .article-title-div {
     border: none;
     border-bottom: 2px solid #ccc;
+    padding-bottom: 20px;
     color: #494949;
     width: 100%;
     display: block;
@@ -170,3 +202,328 @@ button {
     text-align: center;
     font-weight: bold;
 }
+/* page: my_posts */
+.hide {
+    visibility: hidden;
+}
+
+.modal {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+    top: -1000px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: scroll;
+    padding: 60px 15px;
+}
+.modal_active {
+    position: fixed;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+    transition: .3s;
+}
+.modal__content {
+    width: 100%;
+    max-width: 500px;
+    padding: 50px;
+    background: #f9f9f9;
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 5px 15px black;
+}
+
+.modal__title {
+    font-size: 1.8rem;
+    ext-transform: uppercase;
+    margin: 0 0 15px;
+}
+.modal__description {
+    ont-size: 1.125rem;
+}
+.hidden {
+    overflow: hidden;
+}
+/* Кнопки "Редактировать" и "Удалить"*/
+.btn-delete {
+    background: #ee3838 !important;
+}
+/* Картинка в модальном окне "Редактировать" */
+.div-pic-cover {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: top center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.btn-edit-pic, .btn-del-pic {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    cursor: pointer;
+}
+.btn-edit-pic:hover, .btn-del-pic:hover {
+    color: #ee3838;
+}
+.post-div-pic {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: top center;
+    border-radius: 5%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.post-div-pic-card {
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-position: top center;
+    border-radius: 5%;
+    display: inline-block;
+    vertical-align: middle;
+}
+/* Star rating */
+/* Простой рейтинг */
+.form_margin {
+    margin: 0px 0px 30px 0px;
+}
+.form__item {
+    margin: 0px 0px 30px 0px;
+}
+.form__label {
+    margin: 0px 0px 10px 0px;
+}
+.form__btn {
+    height: 50px;
+    background-color: #77608d;
+    padding: 0px 30px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+.simple-rating {
+    position: relative;
+    /* регулируем размер звёзд */
+    font-size: 40px;
+    display: inline-block;
+}
+.simple-rating::before {
+    content: "★★★★★";
+    display: block;
+}
+.simple-rating__items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    overflow: hidden;
+}
+.simple-rating__item {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+}
+.simple-rating__label {
+    flex: 0 0 20%;
+    height: 100%;
+    cursor: pointer;
+    color: #888282;
+}
+.simple-rating__label::before {
+    content: "★";
+    display: block;
+    transition: all 0.3s ease 0s;
+}
+.simple-rating__item:checked,
+.simple-rating__item:checked ~ .simple-rating__label {
+    color: #ff9f00;
+}
+.simple-rating__label:hover,
+.simple-rating__label:hover ~ .simple-rating__label,
+.simple-rating__label:checked ~ .simple-rating__label:hover {
+    color: #f6be66;
+}
+/* Рейтинг с JS */
+.rating {
+    display: flex;
+    align-items: flex-end;
+    font-size: 40px;
+    line-height: 0.75;
+    transition: opacity 0.3s ease 0s;
+}
+.rating.rating_sending {
+    opacity: 0.2;
+}
+.rating.rating_set .rating__active,
+.rating.rating_set .rating__item {
+    cursor: pointer;
+}
+.rating__body {
+    position: relative;
+}
+.rating__body::before {
+    content: "★★★★★";
+    display: block;
+    color: #888282;
+}
+.rating__active {
+    position: absolute;
+    /* заполняемость */
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.rating__active::before {
+    content: "★★★★★";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: #f6be66;
+}
+.rating__items {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.rating__item {
+    flex: 0 0 20%;
+    height: 100%;
+    opacity: 0;
+}
+.rating__value {
+    font-size: 50%;
+    line-height: 1;
+    padding: 0px 0px 0px 10px;
+}
+
+/* Медиа запросы */
+@media screen and (max-width: 1502px) {
+    .my-page-full-name {
+        display: none;
+    }
+    #div-header {
+        padding-left: 1rem;
+    }
+}
+@media screen and (min-width: 1000px) and  (max-width: 1502px){
+    #my-page {
+        padding-left: 2rem;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .mmenuu {
+        display: none;
+    }
+    #my-page {
+        padding-left: 6rem;
+    }
+
+    #div-menu {
+        display: none;
+    }
+}
+/* Меню бургер */
+.hamburger-menu {
+    display: inline-block;
+}
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+}/* стилизуем кнопку */
+.menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center;  /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 20px;
+    right: 20px;  width: 26px;
+    height: 26px;  cursor: pointer;
+    z-index: 1;
+}/* добавляем "гамбургер" */
+.menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+}
+.menu__btn > span::before {
+    content: '';
+    top: -8px;
+}
+.menu__btn > span::after {
+    content: '';
+    top: 8px;
+}
+/* контейнер меню */
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100%;  margin: 0;
+    padding: 80px 0;  list-style: none;
+    text-align: center;  background-color: #ECEFF1;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}/* элементы меню */
+.menu__item {
+    display: block;
+    padding: 12px 24px;  color: #333;  font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;  text-decoration: none;
+}
+.menu__item:hover {
+    background-color: #CFD8DC;
+}
+#menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+}
+#menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+}
+#menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+#menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    right: 0;
+}
+
+.post-text {
+    text-align: justify;
+    width: 100%;
+}
+
+

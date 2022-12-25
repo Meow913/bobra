@@ -1,0 +1,11 @@
+{
+  "authors": [
+    {
+      "name": "Tatyana Kuptsova",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "mpdf/mpdf": "^6.1"
+  }
+}

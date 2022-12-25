@@ -49,7 +49,7 @@ $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, 
 $mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
 
 $mail->setFrom('info@modern-farm.ru'); // от кого будет уходить письмо?
-$mail->addAddress('tatyanko@bk.ru');     // Кому будет уходить письмо
+$mail->addAddress($email);     // Кому будет уходить письмо
 //$mail->addAddress('ellen@example.com');               // Name is optional
 //$mail->addReplyTo('info@example.com', 'Information');
 //$mail->addCC('cc@example.com');
@@ -101,11 +101,11 @@ if (!$_POST['full_name'] || !$_POST['login'] || !$_POST['email']) {
             if ($password === $password_confirm) {
                 $path = 'uploads/' . time() . $_FILES['avatar']['name'];
                 setcookie("PATH", $path);
-                if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../../' . $path)) {   // '../'.
+                if (!move_uploaded_file($_FILES['avatar']['tmp_name'], '../../'.$path)) {   // '../'.
                     $_SESSION['message'] = 'Ошибка при загрузке картинки';
                     header("location: $BASE_URL/assets/register/register.php");
                 }
-                $password = md5($password);
+                $password = password_hash($password, PASSWORD_DEFAULT);
                 setcookie("PASSWORD", $password);
             } else {
                 $_SESSION['message'] = 'Пароли не совпадают';

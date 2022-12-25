@@ -13,5 +13,6 @@ include '../../includes/head.php';
     <a href="#"><?= $_SESSION['user']['email']?></a>
     <a href="logout.php">Выход</a>
 </form>
-</body>
-</html>
+<?php
+include 'includes/footer.php';
+?>
