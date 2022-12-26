@@ -72,7 +72,7 @@ include 'includes/head.php';
         }
              ?>
         >
-            <div data-ajax="true" class="rating rating_set">
+            <div data-ajax="true" class="rating rating_set" style="padding-top: 10px">
                 <div class="rating__body">
                     <div class="rating__active"></div>
                     <div class="rating__items">
@@ -115,19 +115,14 @@ include 'includes/head.php';
 $(function () {
     $('button.btn-delete').click(function (e) {
         e.preventDefault();
-        //let id = $('button.btn-delete').attr("id");
         let postId = $(this).data("id");
-        //console.log(postId);
         $.ajax({
             method: "POST",
-            //contentType: "application/json";
-            //dataType: "json",
             url: "/includes/modaldelete.php",
             data: { "id" : postId},
             success: function (data){ // это done
                 $('#main-index-div').append('<div id="div-load-modal">'+data+'</div>');
                 $('#div-load-modal').data;
-                //console.log(data);
             }
         })
             });
@@ -137,14 +132,11 @@ $(function () {
         console.log(postId);
         $.ajax({
             method: "POST",
-            //contentType: "application/json";
-            //dataType: "json",
             url: "/includes/modaledit.php",
             data: { "id" : postId},
             success: function (data){ // это done
                 $('#main-index-div').append('<div id="div-load-modal">'+data+'</div>');
                 $('#div-load-modal').data;
-                //console.log(data);
             }
         })
     });
@@ -154,11 +146,10 @@ $(function () {
 <script>
     $(document).ready(function (){
         $('input.rating__item').on('click', function (e){
-            //debugger;
+
             let idPost = $(this).data("id");
             let login = $(this).data("login");
-            //console.log(idPost);
-            //console.log(login);
+
             let starValue = $(this).val();
             //console.log(starValue);
             let element = $(this).parent().parent().parent().find('div.rating__value');
@@ -167,9 +158,6 @@ $(function () {
                 method: "POST",
                 url: "/assets/scripts/star_rating.php",
                 data: { "id_post": idPost, "value": starValue, "login": login },
-                success: function () {
-
-                }
             });
             $.ajax({
                 url: '/assets/scripts/star_rating.php',

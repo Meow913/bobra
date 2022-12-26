@@ -23,7 +23,6 @@ function initRatings() {
             setRating(rating);
         }
     }
-
     // Инициализация переменных
     function initRatingVars(rating) {
         ratingActive = rating.querySelector('.rating__active');
@@ -65,7 +64,6 @@ function initRatings() {
             // });
         }
     }
-
     // async function setRatingValue(value, rating){
     //     if (!rating.classList.contains('rating_sending')) {
     //         rating.classList.add('rating_sending');

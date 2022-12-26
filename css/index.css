@@ -520,10 +520,15 @@ button {
     visibility: visible;
     right: 0;
 }
-
 .post-text {
     text-align: justify;
     width: 100%;
 }
-
+.post-div-h3 h3 a{
+    color: black;
+    text-decoration: none
+ }
+.post-div-h3 h3 a:hover{
+    color: black;
+}
 

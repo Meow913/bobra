@@ -28,7 +28,8 @@ if($_POST["id"]) {
 <script>
     $(function () {
         $('button.btn-no').click(function () {
-            $('#div-load-modal').remove();
+            console.log('OK');
+            $('#modal-window').remove();
         });
     });
     $(function () {
@@ -41,13 +42,14 @@ if($_POST["id"]) {
             url: "../assets/scripts/deletepost.php",
             data: {"id": idPost},
             success: function () {
-                window.location.replace("../../index.php");
+                //window.location.replace("../../index.php");
+                window.location.reload();
             }
 
-            success: function (){
+            //success: function (){
 
-                window.location.replace("../../index.php");
-            }
+                //window.location.replace("../../index.php");
+            //}
         })
     });
     });

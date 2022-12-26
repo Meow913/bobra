@@ -2,7 +2,7 @@
 
 include '../path.php';
 include '../assets/functions.php';
-include 'head.php';
+
 
 if($_POST["id"]) {
     $id_post = $_POST["id"];
