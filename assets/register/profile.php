@@ -10,7 +10,7 @@ include '../../includes/head.php';
 <form>
     <img src="<?= $_SESSION['user']['avatar']?>" width="100" alt="">
     <h2><?= $_SESSION['user']['full_name']?></h2>
-    <a href="#"><?= $_SESSION['user']['email']?></a>
+    <a href="#"><?= $_SESSION['user']['email']?></a><br>
     <a href="logout.php">Выход</a>
 </form>
 <?php

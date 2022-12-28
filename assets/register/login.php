@@ -7,7 +7,7 @@ include '../../includes/head.php';
 ?>
 
 <div class="form-div">
-    <form action="<?php echo BASE_URL?>/assets/register/signin.php" method="post">
+    <form action="<?php echo BASE_URL?>/assets/register/signin.php" method="post" style="margin: 0 auto; padding-top: 5rem">
         <label>Логин</label>
         <input type="text" name="login" placeholder="Введите свой логин">
         <label>Пароль</label>

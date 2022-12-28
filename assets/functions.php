@@ -44,6 +44,14 @@ class QueriesToDataBase {
             return $one_post;
         }
     }
+    //SEARCH
+    public function searchPosts ($input){
+        $search_query = ("SELECT * FROM posts WHERE title LIKE '{$input}%'");
+        $statement = $this->classDbh->prepare($search_query);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
 }
 $queryToDataBase = new QueriesToDataBase();
 $queryToDataBase->setConnection($dbh);

@@ -7,7 +7,7 @@ include '../../includes/head.php';
 ?>
 
 <div class="form-div">
-    <form action="<?php echo BASE_URL?>/assets/register/signup.php" method="post" enctype="multipart/form-data">
+    <form action="<?php echo BASE_URL?>/assets/register/signup.php" method="post" enctype="multipart/form-data" style="margin: 0 auto; padding-top: 5rem">
         <label>ФИО</label>
         <input type="text" name="full_name" placeholder="Введите ФИО">
         <label>Логин</label>

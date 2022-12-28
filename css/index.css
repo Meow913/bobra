@@ -46,12 +46,12 @@ body {
     margin: 0;
 }
 #div-menu {
-    display: inline-block;
+    display: table;
     height: 100%;
     top: 0;
     bottom: 0;
-    margin: auto 0;
-    padding-left: 10rem;
+    /*margin: auto 0;*/
+    /*padding-left: 10rem;*/
 }
 .head-li-menu {
     width: 150px;
@@ -60,7 +60,7 @@ body {
 .mmenuu,
 .ssubmenuu {
     list-style: none;
-    display: block;
+    display: inline-block;
     /*margin:0px;*/
     padding: 0px;
 
@@ -119,6 +119,18 @@ ul.ssubmenuu > li > a {
 ul.mmenuu > li:hover > ul.ssubmenuu {
     /* Делаю элементы блочными. */
     display: block;
+}
+/* поиск */
+.div-search {
+    display: table-cell;
+    vertical-align: middle;
+}
+#live-search{
+    border-radius: 5px;
+    outline: none;
+    border-style: none !important;
+    background: #F9F0DA;
+    color: #9E9C9C;
 }
 #my-page{
     display: inline-block;
@@ -440,13 +452,12 @@ button {
     .mmenuu {
         display: none;
     }
-    #my-page {
+    /*#my-page {
         padding-left: 6rem;
-    }
-
-    #div-menu {
+    }*/
+    /*#div-menu {
         display: none;
-    }
+    }*/
 }
 /* Меню бургер */
 .hamburger-menu {
@@ -531,4 +542,5 @@ button {
 .post-div-h3 h3 a:hover{
     color: black;
 }
+
 

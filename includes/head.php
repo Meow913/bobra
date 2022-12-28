@@ -28,6 +28,9 @@
             </p>
         </div>
         <div id="div-menu">
+            <div class="div-search">
+                <input type="text" class="form-control" id="live-search" autocomplete="off" placeholder="Поиск...">
+            </div>
             <ul class="mmenuu">
                 <li class="head-li-menu"><a href="#" onclick="return false">Каталог</a>
                     <ul class="ssubmenuu">
@@ -40,8 +43,6 @@
                         ?></a></li>
                         <?php endforeach;?>
                     </ul>
-                </li>
-                <li class="head-li-menu"><a href=#>Поиск</a>
                 </li>
                 <li class="head-li-menu"><a href="#" onclick="return false">Личный кабинет</a>
                     <ul class="ssubmenuu">
@@ -82,4 +83,31 @@
         </div>
     </div>
 </header>
+<div id="searchresult">
 
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#live-search").keyup(function (){
+            let input = $(this).val();
+            //alert(input);
+            if(input !=""){
+                $.ajax({
+                    url: "../assets/scripts/search_script.php",
+                    method: "POST",
+                    data: {"input": input},
+
+                    success:
+                        function (data) {
+                        $('#main-index-div').remove();
+                        $("#searchresult").html(data);
+                    }
+                });
+            }else{
+                $("#searchresult").css("display", "none");
+                window.location.reload();
+            }
+        })
+    });
+</script
