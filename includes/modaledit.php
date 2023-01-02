@@ -23,7 +23,7 @@ $text = "<p>". str_replace("\n", "</p>\n<p>", $text)."</p>";
             <div class="modal__content" data-url="<?php echo $post['img']; ?>">
                 <!-- Контент модального окна -->
                 <h1 class="modal__title">Редактировать</h1>
-                <input type="text" name="title" class="title" value="<?php echo $post['title']; ?>"><br>
+                <input style="width: 100%" type="text" name="title" class="title" value="<?php echo $post['title']; ?>"><br>
                 <textarea name="content" class="content" rows="20" style="width: 100%"><?php echo $post['text']; ?> </textarea><br>
                 <div class="div-pic-edit">
                     <?php

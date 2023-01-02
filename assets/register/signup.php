@@ -105,7 +105,7 @@ if (!$_POST['full_name'] || !$_POST['login'] || !$_POST['email']) {
                     $_SESSION['message'] = 'Ошибка при загрузке картинки';
                     header("location: $BASE_URL/assets/register/register.php");
                 }
-                $password = password_hash($password, PASSWORD_DEFAULT);
+                $password = md5($password);
                 setcookie("PASSWORD", $password);
             } else {
                 $_SESSION['message'] = 'Пароли не совпадают';

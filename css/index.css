@@ -14,9 +14,11 @@ body {
     background-color: #E9967A;
     position: relative;
     display: flex;
-
 }
-
+.a-post-title {
+    text-decoration: none;
+    color: #494949;
+}
 @media (min-width: 1300px) {
     #div-header {padding-left: 27rem;}
 }
@@ -30,7 +32,6 @@ body {
 #div-logo {
     height: 100%;
     display: flex;
-
 }
 #logo-href-main{
     text-decoration: none;
@@ -435,6 +436,11 @@ button {
 }
 
 /* Медиа запросы */
+@media screen and (min-width: 1000px) {
+    .burger-menu {
+        display: none;
+    }
+}
 @media screen and (max-width: 1502px) {
     .my-page-full-name {
         display: none;
@@ -483,8 +489,8 @@ button {
     display: block;
     position: absolute;
     width: 100%;
-    height: 2px;
-    background-color: #616161;
+    height: 3px;
+    background-color: #2a1810;
 }
 .menu__btn > span::before {
     content: '';
@@ -495,52 +501,129 @@ button {
     top: 8px;
 }
 /* контейнер меню */
-.menu__box {
+.menu-btn{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 25px;
+    /*right:0;*/
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    padding-left: 20px;
+    z-index: 1;
+}
+
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #2a1810;
+    transition-duration: .25s;
+}
+.menu-btn > span::before {
+    content: '';
+    top: -8px;
+}
+.menu-btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menubox{
     display: block;
     position: fixed;
     visibility: hidden;
     top: 0;
     right: -100%;
-    width: 250px;
-    height: 100%;  margin: 0;
-    padding: 80px 0;  list-style: none;
-    text-align: center;  background-color: #ECEFF1;
+    width: 200px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #ECEFF1;
     box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-}/* элементы меню */
-.menu__item {
-    display: block;
-    padding: 12px 24px;  color: #333;  font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 600;  text-decoration: none;
+    transition-duration: .25s;
 }
-.menu__item:hover {
+.menu-item-ul {
+    padding-left: 0px;
+    width: 100%;
+}
+.menu-item-ul-a {
+    display: block;
+    padding: 12px 24px;
+    color: #830000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+.menu-item-ul:hover {
     background-color: #CFD8DC;
 }
-#menu__toggle:checked ~ .menu__btn > span {
+.menu-item {
+    display: block;
+    padding: 12px 24px;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+.menu-item:hover {
+    background-color: #CFD8DC;
+}
+
+
+#menu-toggle{
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .menu-btn > span{
     transform: rotate(45deg);
 }
-#menu__toggle:checked ~ .menu__btn > span::before {
+#menu-toggle:checked ~ .menu-btn > span::before{
     top: 0;
     transform: rotate(0);
 }
-#menu__toggle:checked ~ .menu__btn > span::after {
+#menu-toggle:checked ~ .menu-btn > span::after{
     top: 0;
     transform: rotate(90deg);
 }
-#menu__toggle:checked ~ .menu__box {
+#menu-toggle:checked ~ .menubox{
     visibility: visible;
     right: 0;
 }
-.post-text {
-    text-align: justify;
-    width: 100%;
+
+/*
+    Пагинация
+ */
+.pagination {
+    display: block;
+    width: 50rem;
+    max-width: 90%;
+    margin: 2rem auto;
 }
-.post-div-h3 h3 a{
+.pagination a {
     color: black;
-    text-decoration: none
- }
-.post-div-h3 h3 a:hover{
-    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
 }
+.pagination a:active {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+.pagination a:target {
+    background-color: #4CAF50 !important;
+    color: white !important;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 

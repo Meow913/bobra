@@ -6,21 +6,19 @@ include '../assets/functions.php';
 
 include 'head.php';
 ?>
+
 <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
         crossorigin="anonymous">
 </script>
-<div id="main-index-div">
-    <section class="article-section">
-    <div id="article-title-div" class="div-add">
-        <button id="add-my-post-btn" class="btn-add" name="btn-name" type="submit">Добавить пост</button>
-    </div>
-        <div id="id-add-post-block">
 
-        </div>
-    </section>
+<div id="main-index-div">
+
     <?php
+    $id_category = $_GET['id'];
+    //var_dump($id_category);
+
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
     }else {
@@ -29,14 +27,17 @@ include 'head.php';
     $login = $_SESSION['user']['login'];
     $notesOnPage = 3;
     $from = ($page - 1) * $notesOnPage;
-    $my_posts = $queryToDataBase->getMyPostsPagination($login, $from, $notesOnPage );
+    $my_posts = $queryToDataBase->getPostCategoryPagination($id_category, $from, $notesOnPage);
 
-    $postsAll = $queryToDataBase->getMyPosts($login);
+    $postsAll = $queryToDataBase->getPostsByIdCategory($id_category);
+//    echo '<pre>';
+//    print_r($postsAll);
+//    echo '</pre>';
+    //var_dump($page);
 
     $totals = count($postsAll);
     $totals = $postsAll->rowCount();
     $pagesCount = ceil($totals / $notesOnPage);
-
     $pagesCount = (int) $pagesCount;
 
 
@@ -56,7 +57,7 @@ include 'head.php';
                 }
                 ?>
 
-                <div class="post-div-h3" style="display: inline-block;"> <h3><a class="a-post-title" href="post.php?id=<?=$my_post['id']?>"><?php echo $my_post['title']; ?> </a></h3> </div>
+                <div class="post-div-h3" style="display: inline-block;"> <h3><a href="post.php?id=<?=$my_post['id']?>"><?php echo $my_post['title']; ?> </a></h3> </div>
             </div>
 
             <p><?php echo my_cut($my_post['text'], 128)?></p>
@@ -120,7 +121,7 @@ include 'head.php';
             if($pagesCount == 1){end();}else{
                 ?>
 
-                <a href = "?page=<?php echo $i;?>"><?php echo $i;?></a>
+                <a href = "?id=<?php echo $id_category;?>&page=<?php echo $i;?>"><?php echo $i;?></a>
 
             <?php }}?>
 
@@ -129,15 +130,6 @@ include 'head.php';
 
 </div>
 
-<script>
-    $(document).ready(function (){
-        $('button.btn-add').on('click', function (){
-            $("#id-add-post-block").load("formaddpost.php", function() {
-            });
-            $("div.div-add").remove();
-        })
-    });
-</script>
 
 <script>
     $(function () {
@@ -157,7 +149,7 @@ include 'head.php';
         $('button.btn-edit').click(function (e) {
             e.preventDefault();
             let postId = $(this).data("id");
-            console.log(postId);
+            //console.log(postId);
             $.ajax({
                 method: "POST",
                 url: "modaledit.php",
@@ -202,10 +194,6 @@ include 'head.php';
 </script>
 
 
-
-
 <?php
 include 'footer.php';
 ?>
-
-

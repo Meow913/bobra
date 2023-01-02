@@ -23,6 +23,16 @@ class QueriesToDataBase {
             return $category;
         }
     }
+    public function getPostsByIdCategory ($id_category){
+        $posts = $this->classDbh->query("SELECT * FROM posts WHERE id_category = '$id_category'");
+        return $posts;
+    }
+//    public function getPostsByIdCategory ($id_category){
+//        $query_posts = ("SELECT * FROM posts WHERE id_category = '$id_category' ");
+//        $statement = $this->classDbh->prepare($query_posts);
+//        $statement->execute();
+//        return $statement->fetchAll();
+//    }
     //Запрос на проверку пользователя в базе данных
     public function checkUserIsset ($login) {
         $users_checked = $this->classDbh->query("SELECT login FROM users WHERE login = '$login'");
@@ -51,6 +61,28 @@ class QueriesToDataBase {
         $statement->execute();
         return $statement->fetchAll();
     }
+    //PAGINATION
+    public function getAllPostsPagination ($from, $notesOnPage){
+        $query = ("SELECT * FROM `posts` LIMIT $from, $notesOnPage");
+        $statement = $this->classDbh->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function getMyPostsPagination ($login, $from, $notesOnPage){
+        $query_myposts = ("SELECT * FROM posts WHERE login = '$login' LIMIT {$from}, {$notesOnPage}");
+        $statement = $this->classDbh->prepare($query_myposts);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+    public function getPostCategoryPagination ($id_category, $from, $notesOnPage){
+        $query_myposts = ("SELECT * FROM posts WHERE id_category = $id_category LIMIT $from, $notesOnPage");
+        $statement = $this->classDbh->prepare($query_myposts);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
+
+
 
 }
 $queryToDataBase = new QueriesToDataBase();

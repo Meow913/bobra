@@ -36,7 +36,7 @@
                     <ul class="ssubmenuu">
                         <?php $categoriesAll = $queryToDataBase->getAllCategories();
                         foreach ($categoriesAll as $categoryOne):?>
-                        <li><a href=#>
+                        <li><a href="/includes/categories.php?id=<?php echo $categoryOne['id']?>&page=1">
                                 <?php
                                 echo $categoryOne['name'];
 
@@ -69,18 +69,35 @@
                         ?>
 
         </div>
-        <div class="hamburger-menu>
-            <input id="menu__toggle" type="checkbox" />
-            <label class="menu__btn" for="menu__toggle">
+
+
+        <div class="burger-menu">
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-btn" for="menu-toggle">
                 <span></span>
-            </label>  <ul class="menu__box">
-                <li><a class="menu__item" href="#">Главная</a></li>
-                <li><a class="menu__item" href="#">Проекты</a></li>
-                <li><a class="menu__item" href="#">Команда</a></li>
-                <li><a class="menu__item" href="#">Блог</a></li>
-                <li><a class="menu__item" href="#">Контакты</a></li>
+            </label>
+
+            <ul class="menubox">
+                <ul class="menu-item-ul"><a class="menu-item-ul-a" href="#" onclick="return false">Каталог</a></ul>
+                <?php $categoriesAll = $queryToDataBase->getAllCategories();
+                foreach ($categoriesAll as $categoryOne):?>
+                    <li class="menu-item-ul"><a class="menu-item" href="/includes/categories.php?id=<?php echo $categoryOne['id']?>&page=1"> <?php echo $categoryOne['name']; ?></a></li>
+                <?php endforeach;?>
+                <ul class="menu-item-ul"><a class="menu-item-ul-a" href="#" onclick="return false">Личный кабинет</a></ul>
+
+                <?php
+                if (!isset($_SESSION['user'])){
+                    echo '<li class="menu-item-ul"><a class="menu-item" href="'.BASE_URL.'/assets/register/login.php">Войти</a></li>';
+                }else {
+                    echo '<li class="menu-item-ul"><a class="menu-item" href="'.BASE_URL.'/assets/register/profile.php">Моя страница</a></li>';
+                    echo '<li class="menu-item-ul"><a class="menu-item" href="'.BASE_URL.'/includes/myposts.php">Мои статьи</a></li>';
+                    echo '<li class="menu-item-ul"><a class="menu-item" href="'.BASE_URL.'/assets/register/logout.php">Выход</a></li>';
+                }
+                ?>
             </ul>
         </div>
+
+
     </div>
 </header>
 <div id="searchresult">

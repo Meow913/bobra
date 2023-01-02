@@ -1,7 +1,7 @@
 <?php
 
 
-define('BASE_URL', 'http://мяу.mcdir.me');
+define('BASE_URL', 'http://bobra.mcdir.ru');
 
 
 ?>

@@ -5,22 +5,25 @@ include 'database/connection.php';
 include 'assets/functions.php';
 include 'includes/head.php';
 
-//$data = array();
-//$data2 = array();
-//$data = $star->getRating(47);
-//$data = round($data,2);
-//var_dump($data);
-//$count = count($data);
-//foreach ($data as $value) {
-//    array_push($data2, $value['value']);
-//}
-//echo $count;
-//echo '<pre>';
-//print_r($data2);
-//echo '</pre>';
-//
-//$sum = array_sum($data2);
-//echo $sum;
+if (isset($_GET['page'])) {
+    $page = $_GET['page'];
+}else {
+    $page = 1;
+}
+//$login = $_SESSION['user']['login'];
+$notesOnPage = 3;
+$from = ($page - 1) * $notesOnPage;
+$posts = $queryToDataBase->getAllPostsPagination($from, $notesOnPage);
+$postsAll = $queryToDataBase->getAllPosts();
+
+$totals = count($postsAll);
+$totals = $postsAll->rowCount();
+$pagesCount = ceil($totals / $notesOnPage);
+
+$pagesCount = (int) $pagesCount;
+//$my_posts = $queryToDataBase->getMyPostsPagination($login, $from, $notesOnPage);
+
+
 ?>
 <script
         src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -31,7 +34,7 @@ include 'includes/head.php';
 
 <div id="main-index-div">
     <?php
-    $posts = $queryToDataBase->getAllPosts();
+    //var_dump($_SESSION['user']);
     foreach ($posts as $post):
         $category = $queryToDataBase->getCategoriesById($post['id_category']);
         $star_value = $star->getRating($post['id']);
@@ -48,7 +51,7 @@ include 'includes/head.php';
             }
             ?>
 
-            <div class="post-div-h3" style="display: inline-block;"> <h3><a href="includes/post.php?id=<?=$post['id']?>"><?php echo $post['title']; ?> </a></h3> </div>
+            <div class="post-div-h3" style="display: inline-block;"> <h3><a class="a-post-title" href="includes/post.php?id=<?=$post['id']?>"><?php echo $post['title']; ?> </a></h3> </div>
         </div>
 
         <p><?php echo my_cut($post['text'], 128)?></p>
@@ -100,17 +103,22 @@ include 'includes/head.php';
              ?>
         </div>
 
-
-
-
-
-
     </section>
 
     <?php endforeach; ?>
+    <div class="pagination">
+        <?php for ($i = 1; $i <= $pagesCount; $i ++){
+            if($pagesCount == 1){end();}else{
+                ?>
 
+                <a href = "?page=<?php echo $i;?>"><?php echo $i;?></a>
+
+            <?php }}?>
+
+    </div>
 
 </div>
+
 <script>
 $(function () {
     $('button.btn-delete').click(function (e) {
@@ -172,6 +180,7 @@ $(function () {
 
     });
 </script>
+
 
 <?php
 
